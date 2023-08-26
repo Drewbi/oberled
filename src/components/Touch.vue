@@ -1,11 +1,14 @@
 <script setup>
-    import { ref, onMounted, onUnmounted } from 'vue';
-
-    const socket = ref(null);
-    const data = ref(null);
-    const connected = ref(false);
+    import { ref, computed } from 'vue';
 
     const isMouseDown = ref(false);
+    const touchElem = ref(null)
+    const offsetX = computed(() => touchElem.value.getBoundingClientRect().left)
+    const offsetY = computed(() => touchElem.value.getBoundingClientRect().top)
+
+    const props = defineProps(['data']);
+
+    const emit = defineEmits(['sendMove']);
 
     const mouseDown = (event) => {
         isMouseDown.value = true;
@@ -24,68 +27,34 @@
     };
 
     const sendCoordinates = (event) => {
-        if (connected.value && socket.value && socket.value.readyState === WebSocket.OPEN) {
-            const coordinates = {
-                x: event.clientX - event.currentTarget.offsetLeft,
-                y: event.clientY - event.currentTarget.offsetTop,
-            };
+        const coordinates = {
+            x: event.clientX - event.currentTarget.offsetLeft,
+            y: event.clientY - event.currentTarget.offsetTop,
+        };
 
-            socket.value.send(JSON.stringify(coordinates));
-        }
+        emit('sendMove', JSON.stringify(coordinates));
     };
 
     const sendEnd = () => {
-        if (connected.value && socket.value && socket.value.readyState === WebSocket.OPEN) {
-            socket.value.send(JSON.stringify({ end: true }));
-        }
-    }
-
-    onMounted(() => {
-        connect()
-    })
-
-    onUnmounted(() => {
-        if (socket.value) {
-            socket.value.close();
-            connected.value = false;
-        }
-    });
-
-    const connect = () => {
-        socket.value = new WebSocket('wss://oberled-socket.drub.workers.dev');
-
-        socket.value.onopen = () => {
-            console.log('Connection opened');
-            connected.value = true;
-        };
-
-        socket.value.onmessage = (event) => {
-            console.log(event.data)
-            const parsed = JSON.parse(event.data);
-            data.value = parsed.filter(pos => pos && pos.x && pos.y)
-        };
-
-        socket.value.onerror = (error) => {
-            console.error('WebSocket Error: ', error);
-            connected.value = false;
-        };
+        emit('sendMove', JSON.stringify({ end: true }));
     }
 
 </script>
 
 <template>
-    <div id="input" @mousedown="mouseDown" @mousemove="mouseMove" @mouseup="mouseUp" @mouseleave="mouseUp">
+    <div ref="touchElem" id="input" @mousedown="mouseDown" @mousemove="mouseMove" @mouseup="mouseUp" @mouseleave="mouseUp">
+        <div class="grid-item" v-for="n in 256" :key="n"></div>
         <div
-            v-for="position in data"
+            v-for="position in props.data"
             :key="position.x + '-' + position.y"
             :style="{
                 width: '10px',
                 height: '10px',
                 borderRadius: '50%',
-                backgroundColor: 'red',
+                backgroundColor: '#f1f4f2',
                 position: 'absolute',
-                left: 20 + position.x + 'px',
-                top: 20 + position.y + 'px',
+                left: offsetX + position.x + 'px',
+                top: offsetY + position.y + 'px',
                 visibility: position.x === null || position.y === null ? 'hidden' : 'visible'
             }"
         ></div>
@@ -94,9 +63,26 @@
 
 <style scoped>
     #input {
-        width: 80%;
-        height: 80%;
-        border: 2px solid white;
+        width: 350px;
+        height: 500px;
+        border: 2px solid #f1f4f2;
         border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(16, 1fr);
+        gap: 12px 2px;
+        padding: 10px;
+    }
+
+    .grid-item {
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        background-color: #212121;
+        transition: background-color 0.1s ease;
+    }
+
+    .grid-item:hover {
+        background-color: #f1f4f2;
     }
 </style>
