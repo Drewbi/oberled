@@ -50,8 +50,7 @@ const send = (data) => {
     debug.value = ''
     if (connected.value && socket.value && socket.value.readyState === WebSocket.OPEN) {
         debug.value = data
-        console.log(decodeURIComponent(data))
-        socket.value.send(decodeURIComponent(data))
+        socket.value.send(data)
     }
 }
 </script>
