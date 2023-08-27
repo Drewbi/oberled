@@ -22,6 +22,7 @@
 
     const connect = () => {
         socket.value = new WebSocket('wss://oberled-socket.drub.workers.dev');
+        // socket.value = new WebSocket('ws://localhost:8787');
 
         socket.value.onopen = () => {
             console.log('Connection opened');
@@ -49,7 +50,8 @@
         debug.value = ''
         if (connected.value && socket.value && socket.value.readyState === WebSocket.OPEN) {
             debug.value = data
-            socket.value.send(data);
+            console.log(decodeURIComponent(data))
+            socket.value.send(decodeURIComponent(data));
         }
     }
 </script>
