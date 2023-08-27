@@ -6,6 +6,8 @@
     const socket = ref(null);
     const data = ref(null);
     const connected = ref(false);
+    const debug = ref('')
+    const debug2 = ref('')
 
     onMounted(() => {
         connect()
@@ -27,8 +29,14 @@
         };
 
         socket.value.onmessage = (event) => {
+            debug2.value = ''
             const parsed = JSON.parse(event.data);
-            data.value = parsed.filter(pos => pos && pos.x && pos.y)
+            debug2.value = parsed
+            if(parsed.error) {
+                debug.value = parsed.error
+                console.error('WebSocket Error: ', parsed.error);
+            }
+            else data.value = parsed.filter(pos => pos && pos.x !== undefined && pos.y !== undefined)
         };
 
         socket.value.onerror = (error) => {
@@ -38,7 +46,9 @@
     }
 
     const send = (data) => {
+        debug.value = ''
         if (connected.value && socket.value && socket.value.readyState === WebSocket.OPEN) {
+            debug.value = data
             socket.value.send(data);
         }
     }
@@ -46,8 +56,11 @@
 
 <template>
     <div id="container">
-        <Status :isConnected="connected" />
+        debug {{ debug }}
+        debug2 {{ debug2 }}
+        data {{ data }}
         <Touch :data="data" @send-move="send($event)" />
+        <Status :isConnected="connected" />
     </div>
 </template>
 
@@ -58,5 +71,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
 </style>

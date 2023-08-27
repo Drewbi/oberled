@@ -8,8 +8,8 @@
     const props = defineProps(['isConnected']);
 
     const circleStyle = computed(() => ({
-        width: '8px',
-        height: '8px',
+        width: '15px',
+        height: '15px',
         borderRadius: '50%',
         backgroundColor: props.isConnected ? '#a8dadc' : '#e63946'
     }));
@@ -17,11 +17,11 @@
 
 <style scoped>
     #connection {
-        font-size: 10px;
+        font-size: 16px;
         display: flex;
         align-items: flex-end;
         gap: 4px;
         line-height: 1;
-        margin-bottom: 5px;
+        margin-top: 20px;
     }
 </style>

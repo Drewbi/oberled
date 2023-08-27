@@ -1,39 +1,61 @@
 <script setup>
-    import { ref, computed } from 'vue';
+    import { ref, watch, computed } from 'vue';
+    import Pixel from './Pixel.vue'
 
-    const isMouseDown = ref(false);
-    const touchElem = ref(null)
-    const offsetX = computed(() => touchElem.value.getBoundingClientRect().left)
-    const offsetY = computed(() => touchElem.value.getBoundingClientRect().top)
-
+    const isInputDown = ref(false);
+    const touchElem = ref(null);
+    const selectedX = ref(null)
+    const selectedY = ref(null)
+    
     const props = defineProps(['data']);
+
+    const selectedIndexes = computed(() => props.data?.map(pos => pos.y * 16 + pos.x) ?? [])
 
     const emit = defineEmits(['sendMove']);
 
-    const mouseDown = (event) => {
-        isMouseDown.value = true;
-        sendCoordinates(event);
+    watch(selectedX, (newVal, oldVal) => {
+        if (newVal !== oldVal) sendCoordinates(selectedX.value, selectedY.value)
+    })
+
+    watch(selectedY, (newVal, oldVal) => {
+        if (newVal !== oldVal) sendCoordinates(selectedX.value, selectedY.value)
+    })
+
+    const inputStart = (event) => {
+        isInputDown.value = true;
+        setCoordinates(event);
     };
 
-    const mouseMove = (event) => {
-        if (isMouseDown.value) {
-            sendCoordinates(event);
+    const inputMove = (event) => {
+        if (isInputDown.value) {
+            setCoordinates(event);
         }
     };
 
-    const mouseUp = () => {
-        isMouseDown.value = false;
+    const inputStop = () => {
+        isInputDown.value = false;
         sendEnd();
     };
 
-    const sendCoordinates = (event) => {
+    const setCoordinates = (event) => {
+        const inputX = event.clientX !== undefined ? event.clientX : event.touches[0].clientX
+        const inputY = event.clientY !== undefined ? event.clientY : event.touches[0].clientY
         const coordinates = {
-            x: event.clientX - event.currentTarget.offsetLeft,
-            y: event.clientY - event.currentTarget.offsetTop,
+            x: inputX - touchElem.value.offsetLeft - 20,
+            y: inputY - touchElem.value.offsetTop - 20,
         };
+        if(coordinates.x < 0 || coordinates.y < 0) return
+        
+        const pixelX = Math.round((coordinates.x / (touchElem.value.clientWidth - 40)) * 15)
+        const pixelY = Math.round((coordinates.y / (touchElem.value.clientHeight - 40)) * 15)
 
-        emit('sendMove', JSON.stringify(coordinates));
+        selectedX.value = pixelX
+        selectedY.value = pixelY
     };
+
+    const sendCoordinates = (x, y) => {
+        emit('sendMove', JSON.stringify({ x, y }));
+    }
 
     const sendEnd = () => {
         emit('sendMove', JSON.stringify({ end: true }));
@@ -42,47 +64,39 @@
 </script>
 
 <template>
-    <div ref="touchElem" id="input" @mousedown="mouseDown" @mousemove="mouseMove" @mouseup="mouseUp" @mouseleave="mouseUp">
-        <div class="grid-item" v-for="n in 256" :key="n"></div>
-        <div
-            v-for="position in props.data"
-            :key="position.x + '-' + position.y"
-            :style="{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                backgroundColor: '#f1f4f2',
-                position: 'absolute',
-                left: offsetX + position.x + 'px',
-                top: offsetY + position.y + 'px',
-                visibility: position.x === null || position.y === null ? 'hidden' : 'visible'
-            }"
-        ></div>
+    <div
+        ref="touchElem"
+        id="input"
+        @mousedown="inputStart"
+        @mousemove="inputMove"
+        @mouseup="inputStop"
+        @mouseleave="inputStop"
+        @touchstart="inputStart"
+        @touchmove="inputMove"
+        @touchend="inputStop"
+        @touchcancel="inputStop"
+    >
+        <Pixel v-for="n in 256" :key="n" :selected="selectedIndexes?.includes(n - 1)"></Pixel>
   </div>
 </template>
 
 <style scoped>
     #input {
-        width: 350px;
-        height: 500px;
+        height: 60vh;
+        width: 40vh;
         border: 2px solid #f1f4f2;
-        border-radius: 10px;
+        border-radius: 8px;
         display: grid;
         grid-template-columns: repeat(16, 1fr);
         grid-template-rows: repeat(16, 1fr);
-        gap: 12px 2px;
+        align-items: center;
+        gap: 0 3px;
         padding: 10px;
+        user-select: none;
+        -webkit-user-drag: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
 
-    .grid-item {
-        width: 100%;
-        height: 100%;
-        border-radius: 2px;
-        background-color: #212121;
-        transition: background-color 0.1s ease;
-    }
-
-    .grid-item:hover {
-        background-color: #f1f4f2;
-    }
+    
 </style>
