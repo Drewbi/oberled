@@ -12,19 +12,41 @@
 		<link rel="stylesheet" href="dist/theme/dru.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="plugin/highlight/base16-material-darker.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>OBEGRANDSAD</section>
-				<section>Slide 2</section>
+				<section>
+                    <h1 class="r-fit-text">OBEGRÄNSAD</h1>
+                    <b>Procedural art with a hacked IKEA lamp</b>
+                </section>
+                <section>
+                        <video class="r-stretch r-frame" data-autoplay src="./assets/ikea_demo.mp4" loop></video>
+                        <b class="r-fit-text">Wall Lamp, Art Frame, LED Panel?</b>
+                </section>
+                <section>
+                        <img class="r-stretch" src="./assets/obegransadwebsite.jpg" alt="ikea.com product page for the obegransad">
+                </section>
+                <section>
+                        <div class="r-hstack">
+                            <img src="./assets/mode1.gif" alt="example mode 1">
+                            <img src="./assets/mode2.gif" alt="example mode 2">
+                            <img src="./assets/mode3.gif" alt="example mode 3">
+                        </div>
+                </section>
+				<section>
+                    <h1 class="r-fit-text">How do I justify my purchase</h1>
+                    <b>Of this obscure product</b>
+                </section>
 			</div>
 		</div>
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
@@ -36,7 +58,7 @@
                 progress: false,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
 			});
 		</script>
 	</body>

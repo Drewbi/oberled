@@ -3,7 +3,9 @@
  *
  * By Drew Alexander
  */
-@import url(./fonts/source-sans-pro/source-sans-pro.css);
+@import url(./fonts/red-hat-display/RedHatDisplay.css);
+@import url(./fonts/red-hat-mono/RedHatMono.css);
+@import url(./fonts/red-hat-text/RedHatText.css);
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222;
 }
@@ -12,19 +14,19 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 :root {
-  --r-background-color: #191919;
-  --r-main-font: Source Sans Pro, Helvetica, sans-serif;
+  --r-background-color: #282828;
+  --r-main-font: Red Hat Text, Helvetica, sans-serif;
   --r-main-font-size: 42px;
   --r-main-color: #fff;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
-  --r-heading-font: Source Sans Pro, Helvetica, sans-serif;
-  --r-heading-color: #fff;
+  --r-heading-font: Red Hat Display, Helvetica, sans-serif;
+  --r-heading-color: #a8dadc;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: uppercase;
   --r-heading-text-shadow: none;
-  --r-heading-font-weight: 600;
+  --r-heading-font-weight: 800;
   --r-heading1-text-shadow: none;
   --r-heading1-size: 2.5em;
   --r-heading2-size: 1.6em;
@@ -39,7 +41,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .reveal-viewport {
-  background: #191919;
+  background: #282828;
   background-color: var(--r-background-color);
 }
 
