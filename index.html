@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="dist/theme/dru.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/base16-material-darker.css">
+		<link rel="stylesheet" href="plugin/highlight/material-darker.css">
 	</head>
 	<body>
 		<div class="reveal">
@@ -76,8 +76,18 @@
                         <li class="fragment">Speak at DDD??</li>
                     </ul>
                     <aside class="notes">
-                        I'm here today so lets see how the other ones worked out
+                        <p>I'm here today so lets see how the other ones worked out</p>
+                        <p>This is going to be a variety talk and will be covering:</p>
+                        <ul>
+                            <li>Hardware</li>
+                            <li>Art</li>
+                            <li>Software</li>
+                        </ul>
+
                     </aside>
+                </section>
+                <section>
+                    <img src="./assets/sponsors.png" alt="sponsor slide">
                 </section>
                 <section>
                     <h1>Hardware</h1>
@@ -96,6 +106,71 @@
                     <h3>6. Get help</h3>
                     <img class="r-stretch" src="./assets/ph1p-repo.jpg" alt="Github repo for prior work">
                 </section>
+                <section>
+                    The internals
+                </section>
+                <section data-auto-animate>
+                    <img height="300px" src="./assets/toit.png" alt="toit logo">
+                    <h3>The Framework</h4>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-stack fragments">
+                        <img height="250px" src="./assets/toit.png" alt="toit logo">
+                        <small style="position: relative; bottom: 200px; right: 0px;">Not C++</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; right: 300px;">Made for ESP32</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; left: 300px;">Wifi updates</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; right: 340px;">High level language</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; left: 340px;">Hard to brick</small>
+                        <small class="fragment" style="position: relative; top: 50px; right: 300px;">Power efficient</small>
+                        <small class="fragment" style="position: relative; top: 50px; left: 300px;">Shiny new technology</small>
+                        <small class="fragment" style="position: relative; top: 200px; right: 0px;">Nice logo</small>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Great developer experience</li>
+                            <li>Right level of abstractions for me</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <pre class="r-frame"><code data-trim data-line-numbers="8-13|15-18|20-22">
+                        import gpio
+                        ENABLE_PIN ::= gpio.Pin 26
+                        DATA_PIN ::= gpio.Pin 27
+                        CLOCK_PIN ::= gpio.Pin 14
+                        LATCH_PIN ::= gpio.Pin 12
+                        BUTTON_PIN := gpio.Pin 25
+
+                        init_io:
+                            ENABLE_PIN.configure --output
+                            DATA_PIN.configure --output
+                            CLOCK_PIN.configure --output
+                            LATCH_PIN.configure --output
+                            BUTTON_PIN.configure --input --pull_up
+
+                        write_dot x/int:
+                            DATA_PIN.set x
+                            CLOCK_PIN.set 1
+                            CLOCK_PIN.set 0
+
+                        display_frame:
+                            LATCH_PIN.set 1
+                            LATCH_PIN.set 0
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <pre class="r-frame"><code data-trim data-line-numbers>
+                        import .io
+
+                        main:
+                            init_io
+
+                            while true:
+                                write_dot 1
+                                display_frame
+                                sleep --ms=33
+                    </code></pre>
+                </section>
 			</div>
 		</div>
 
@@ -104,6 +179,7 @@
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/zoom/zoom.js"></script>
 
+		<script src="plugin/highlight/toit.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
@@ -113,7 +189,11 @@
 				hash: true,
                 transition: "fade",
                 progress: false,
-
+                highlight: {
+                    beforeHighlight: hljs => {
+                        hljs.registerLanguage("toit", hljsToit)
+                    }
+                },
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
 			});
