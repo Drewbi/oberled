@@ -16,7 +16,13 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides">  
+<!-- 
+                ___ _  _ _____ ___  ___  
+                |_ _| \| |_   _| _ \/ _ \ 
+                 | || .` | | | |   / (_) |
+                |___|_|\_| |_| |_|_\\___/ 
+-->
 				<section>
                     <h1 class="r-fit-text">OBEGRÄNSAD</h1>
                     <b>Procedural art with a hacked IKEA lamp</b>
@@ -28,7 +34,7 @@
                     <b>Wall Lamp, Art Frame, LED Panel?</b>
                 </section>
                 <section class="fragments">
-                    <img class="r-stretch" src="./assets/obegransadwebsite.jpg" alt="ikea.com product page for the obegransad">
+                    <img class="r-frame r-stretch" src="./assets/obegransadwebsite.jpg" alt="ikea.com product page for the obegransad">
                     <p class="fragment">Instant buy</p>
                     <aside class="notes">
                         Zoom in to things
@@ -44,7 +50,7 @@
                     </aside>
                 </section>
                 <section>
-                    <img src="./assets/ikea-sales-target.jpg" alt="ikea celebrating">
+                    <img class="r-frame" src="./assets/ikea-sales-target.jpg" alt="ikea celebrating">
                     <small>fig 1: IKEA Employees reaching their sales target of 1</small>
                 </section>
                 <section class="fragments">
@@ -87,8 +93,13 @@
                     </aside>
                 </section>
                 <section>
-                    <img src="./assets/sponsors.png" alt="sponsor slide">
+                    <img class="r-frame" src="./assets/sponsors.png" alt="sponsor slide">
                 </section>
+            <!-- _  _   _   ___ _____      ___   ___ ___ 
+                | || | /_\ | _ \   \ \    / /_\ | _ \ __|
+                | __ |/ _ \|   / |) \ \/\/ / _ \|   / _| 
+                |_||_/_/ \_\_|_\___/ \_/\_/_/ \_\_|_\___|
+-->
                 <section>
                     <h1>Hardware</h1>
                 </section>
@@ -104,13 +115,13 @@
                 </section>
                 <section>
                     <h3>6. Get help</h3>
-                    <img class="r-stretch" src="./assets/ph1p-repo.jpg" alt="Github repo for prior work">
+                    <img class="r-frame r-stretch" src="./assets/ph1p-repo.jpg" alt="Github repo for prior work">
                 </section>
                 <section>
                     The internals
                 </section>
                 <section data-auto-animate>
-                    <img height="300px" src="./assets/toit.png" alt="toit logo">
+                    <img  src="./assets/toit.png" alt="toit logo" height="300px">
                     <h3>The Framework</h4>
                 </section>
                 <section data-auto-animate>
@@ -159,18 +170,195 @@
                     </code></pre>
                 </section>
                 <section data-auto-animate>
-                    <pre class="r-frame"><code data-trim data-line-numbers>
-                        import .io
-
-                        main:
-                            init_io
-
-                            while true:
-                                write_dot 1
-                                display_frame
-                                sleep --ms=33
-                    </code></pre>
+                    <div class="r-hstack" style="gap: 100px;">
+                        <pre class="r-frame" width="200px;"><code data-trim data-line-numbers>
+                            import .io
+                            main:
+                                init_io
+                                while true:
+                                    write_dot 1
+                                    display_frame
+                                    sleep --ms=33
+                        </code></pre>
+                        <video class="r-frame" width="500px" data-autoplay src="./assets/bit.mp4" alt="board filling up with pixels" loop></video>
+                    </div>
                 </section>
+                <section>
+                    why that pattern occurs
+                    <aside class="notes">wip</aside>
+                </section>
+<!--             _   ___ _____ 
+                /_\ | _ \_   _|
+               / _ \|   / | |  
+              /_/ \_\_|_\ |_|  
+-->
+                <section>
+                    <small><em>making</em></small>
+                    <h1>Art</h1>
+                </section>
+                <section>
+                    <div class="r-stack">
+                        <img class="r-frame" width="500px" height="500px" src="./assets/monalisa.png" alt="monalisa pixilated black and white">
+                        <img class="fragment r-frame" width="500px" height="500px" src="./assets/monalisacontrast.png" alt="monalisa pixilated grey scale">
+                        <img class="fragment r-frame" width="500px" height="500px" src="./assets/monalisacolour.png" alt="monalisa pixilated colour">
+                    </div>
+                    <aside class="notes">
+                        I hope you've realised by now it's not going to be that kind of art
+                    </aside>
+                </section>
+                <section>
+                    <small>no, we're going to be making</small>
+                    <h1 class="r-fit-text">🎉Abstract art🎉</h1>
+                </section>
+                <section>
+                    <em>speaking of abstract</em>
+                </section>
+                <section>
+                    <small>Abstraction 1:</small>
+                    <br>
+                    <h3>Frames</h3>
+                </section>
+                <section>
+                    <img class="r-frame" src="./assets/framedemo.gif" alt="array of data representing a frame">
+                </section>
+                <section>
+                    Order all messed up
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    mapping function / mapping array
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    example 1: morph
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    making frames by hand is hard, has to be better way
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    <small>Abstraction 2:</small>
+                    <br>
+                    <h3>Cursor</h3>
+                </section>
+                <section>
+                    example 1: chase
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    good for dynamic behaivior but not for large scale updates
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    <p>The process</p>
+                    <p>Looking for emergent patterns</p>
+                    <p>Hard to think up a full final concept, have to experiment</p>
+                </section>
+                <section>
+                    Showcase vs Decoration
+                </section>
+<!--             ___  ___  ___ _______      ___   ___ ___ 
+                / __|/ _ \| __|_   _\ \    / /_\ | _ \ __|
+                \__ \ (_) | _|  | |  \ \/\/ / _ \|   / _| 
+                |___/\___/|_|   |_|   \_/\_/_/ \_\_|_\___|
+-->
+                <section>
+                    <small><em>even more</em></small>
+                    <h1>Software</h1>
+                    <aside class="notes">Let's see how far we can push this thing</aside>
+                </section>
+                <section data-auto-animate>
+                    <h3>Let's play a game</h3>
+                    <img width="500px" src="./assets/multiplayerqr.png" alt="mysterious qr code">
+                </section>
+                <section data-auto-animate>
+                    <img height="400px" src="./assets/cloudflarearch.png">
+                    <div class="r-hstack" style="gap: 100px;">
+                        <a href="https://oberled-ui.pages.dev/">oberled-ui.pages.dev</a>
+                        <img width="200px" src="./assets/multiplayerqr.png" alt="mysterious qr code">
+                    </div>
+                </section>
+                <section>
+                    A few thoughts (and limitations) regarding toit
+                    <aside class="notes">
+                        <p>the new language was a net negative</p>
+                        <p>hard to find examples because new</p>
+                        <p>great tooling and amazing functionality offering</p>
+                        <p>not the right tool for the job (efficiency vs speed)</p>
+                    </aside>
+                </section>
+                <section>
+                    Limitations of the screen
+                </section>
+                <section>
+                    Noticed ikea has brightness (HOW)
+                </section>
+                <section data-auto-animate>
+                    <img style="filter: invert();" src="./assets/rustlogo.png" alt="rust logo" height="300px">
+                    <h3>The (new) Framework</h4>
+                    <aside class="notes">
+                        bet you didn't think this would turn into a rust talk halfway through
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-stack fragments">
+                        <img style="filter: invert();" height="250px" src="./assets/rustlogo.png" alt="rust logo">
+                        <small style="position: relative; bottom: 200px; right: 0px;">Not C++</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; right: 300px;">Speedy</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; left: 300px;">Helps you write good code</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; right: 340px;">Low level language</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; left: 340px;">Hard to brick</small>
+                        <small class="fragment" style="position: relative; top: 50px; right: 300px;">Decent support for ESP32</small>
+                        <small class="fragment" style="position: relative; top: 50px; left: 300px;">Really intimidating</small>
+                        <small class="fragment" style="position: relative; top: 200px; right: 0px;">I don't like the logo</small>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Great developer experience</li>
+                            <li>Right level of abstractions for me</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    Chip swap
+                </section>
+                <section>
+                    The rust journey (short)
+                </section>
+                <section>
+                    BRIGHTNESS ACHIEVED
+                </section>
+                <section>
+                    Noise art
+                </section>
+                <section>
+                    Rasterisation
+                </section>
+<!--             ___ ___  _  _  ___ _   _   _ ___ ___ ___  _  _ 
+                / __/ _ \| \| |/ __| | | | | / __|_ _/ _ \| \| |
+               | (_| (_) | .` | (__| |_| |_| \__ \| | (_) | .` |
+                \___\___/|_|\_|\___|____\___/|___/___\___/|_|\_|
+ -->
+                <section>
+                    <small><em>key</em></small>
+                    <h1>Takeaways</h1>
+                </section>
+                <section>
+                    <ul>
+                        <li>Making good art is hard</li>
+                        <li>Depends on the medium/limitations</li>
+                        <li>For a product like this doing this last part is VERY IMPORTANT</li>
+                        <li>Embedded performance is tricky</li>
+                    </ul>
+                </section>
+                <section>
+                    But wait there's more
+                </section>
+                <section>
+                    <h1>Thank you</h1>
+                </section>
+                <section>Plug/Links</section>
 			</div>
 		</div>
 
