@@ -32,7 +32,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --r-heading2-size: 1.6em;
   --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
-  --r-code-font: monospace;
+  --r-code-font: Red Hat Mono, monospace;
   --r-link-color: #a8dadc;
   --r-link-color-dark: #71c3c6;
   --r-link-color-hover: #dff1f2;
@@ -283,8 +283,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .reveal small {
+  font-family: var(--r-code-font);
   display: inline-block;
-  font-size: 0.6em;
+  font-size: 0.5em;
   line-height: 1.2em;
   vertical-align: top;
 }

@@ -1,0 +1,35 @@
+.pixel {
+    border: 1px solid white;
+    border-radius: 1px;
+    width: 100%;
+    height: 100%;
+    
+    &.on {
+        background-color: white;
+    }
+}
+
+.pixel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    
+    
+
+    border: 2px solid #457B9D;
+    border-radius: 5px;
+
+
+
+    &.landscape {
+        width: 400px;
+        height: 300px;
+    }
+
+    &.portrait {
+        height: 400px;
+        width: 300px;
+        gap: 40px 10px;
+        padding: 20px;
+    }
+}

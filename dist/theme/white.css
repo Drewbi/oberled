@@ -281,8 +281,9 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 }
 
 .reveal small {
+  font-family: var(--r-code-font);
   display: inline-block;
-  font-size: 0.6em;
+  font-size: 0.5em;
   line-height: 1.2em;
   vertical-align: top;
 }
