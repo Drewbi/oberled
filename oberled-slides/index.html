@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>OBERLED SLIDES</title>
+        <link rel="shortcut icon" href="favicon.png" type="image/png">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/dru.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/material-darker.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">  
+<!-- 
+                ___ _  _ _____ ___  ___  
+                |_ _| \| |_   _| _ \/ _ \ 
+                 | || .` | | | |   / (_) |
+                |___|_|\_| |_| |_|_\\___/ 
+-->
+				<section>
+                    <h1 class="r-fit-text">OBEGRÄNSAD</h1>
+                    <b>Procedural art with a hacked IKEA lamp</b>
+                    <aside class="notes">Anyone here work at IKEA?</aside>
+                </section>
+                <section>
+                    <video class="r-frame" height="600px" data-autoplay src="./assets/ikea_demo.mp4" loop></video>
+                    <br>
+                    <b>Wall Lamp, Art Frame, LED Panel?</b>
+                </section>
+                <section class="fragments">
+                    <img class="r-frame r-stretch" src="./assets/obegransadwebsite.jpg" alt="ikea.com product page for the obegransad">
+                    <p class="fragment">Instant buy</p>
+                    <aside class="notes">
+                        Zoom in to things
+                        <ul>
+                            <li>limited edition</li>
+                            <li>5 lighting programs</li>
+                            <li>developed by swedish house mafia</li>
+                            <li>$149</li>
+                            <li>0 reviews</li>
+                        </ul>
+
+                        I bought one
+                    </aside>
+                </section>
+                <section>
+                    <img class="r-frame" src="./assets/ikea-sales-target.jpg" alt="ikea celebrating">
+                    <small>fig 1: IKEA Employees reaching their sales target of 1</small>
+                </section>
+                <section class="fragments">
+                        <small>⚠️ Mild Photosensitivity Warning ⚠️</small>
+                        <div class="r-hstack justify-around fragment">
+                            <img src="./assets/demos/mode1.gif" width="300px"  alt="example mode 1">
+                            <img src="./assets/demos/mode2.gif" width="300px" alt="example mode 2">
+                            <img src="./assets/demos/mode3.gif" width="300px" alt="example mode 3">
+                        </div>                        
+                </section>
+				<section>
+                    <h1 class="r-fit-text">How do I justify my purchase</h1>
+                    <b>Of this obscure product</b>
+                    <aside class="notes">
+                        <p>The real talk title</p>
+                        <p>The goal:</p>
+                        <ul>
+                            <li>Make a functional piece of decorative lighting</li>
+                            <li>Learn a lot about embedded and graphics</li>
+                            <li>Give a DDD talk??</li>
+                        </ul>
+                    </aside>
+                </section>
+				<section>
+                    <h3>Goals:</h3>
+                    <ul class="fragments">
+                        <li>Make a functional piece of decorative lighting</li>
+                        <li class="fragment">Learn a lot about embedded and graphics</li>
+                        <li class="fragment">Give a talk at a tech conference(?)</li>
+                    </ul>
+                    <aside class="notes">
+                        <p>I'm here today so lets see how the other ones worked out</p>
+                        <p>This is going to be a variety talk and will be covering:</p>
+                        <ul>
+                            <li>Hardware</li>
+                            <li>Art</li>
+                            <li>Software</li>
+                        </ul>
+
+                    </aside>
+                </section>
+                <section>
+                    <img class="r-frame" src="./assets/sponsors.png" alt="sponsor slide">
+                </section>
+<!--             _  _   _   ___ _____      ___   ___ ___ 
+                | || | /_\ | _ \   \ \    / /_\ | _ \ __|
+                | __ |/ _ \|   / |) \ \/\/ / _ \|   / _| 
+                |_||_/_/ \_\_|_\___/ \_/\_/_/ \_\_|_\___|
+-->
+                <section>
+                    <h1>Hardware</h1>
+                </section>
+                <section>
+                    <h3>How to hack</h3>
+                    <ol class="fragments">
+                        <li>Access internals</li>
+                        <li class="fragment">Remove microcontroller</li>
+                        <li class="fragment">Add programmable microcontroller</li>
+                        <li class="fragment">Rewrite all the driver and application code</li>
+                        <li class="fragment">Don't use guides or get any help</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>6. Get help</h3>
+                    <img class="r-frame r-stretch" src="./assets/ph1p-repo.jpg" alt="Github repo for prior work">
+                </section>
+                <section>
+                    <div class="r-stack fragments">
+                        <img class="r-frame" width="600px" src="./assets/rivet1.jpg" alt="outside rivets">
+                        <img class="r-frame fragment" width="600px" src="./assets/rivet2.jpg" alt="inside rivets">
+                        <img class="r-frame fragment" width="600px" src="./assets/rivet3.jpg" alt="inside the case">
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>IKEA really doesn't want people poking around in here</li>
+                            <li>Use pliers or a crowbar to get these rivets off and don't cut yourself on the sharp plastic</li>
+                            <li>Take off enough to access</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <div class="r-hstack justify-around">
+                        <div class="r-vstack items-start">
+                            <div class="r-hstack" style="gap: 20px;">
+                                <img width="50px" src="./assets/diagrams/input.png" alt="symbol for input connector">
+                                <small class="code">Input/Output Connector</small>
+                            </div>
+                            <div class="r-hstack" style="gap: 20px;">
+                                <img width="50px" src="./assets/diagrams/register.png" alt="symbol for memory register">
+                                <small class="code">16-bit Register</small>
+                            </div>
+                            <div class="r-hstack" style="gap: 20px;">
+                                <img width="50px" src="./assets/diagrams/controller.png" alt="symbol for microcontroller">
+                                <small class="code">Integrated Microcontroller</small>
+                            </div>
+                        </div>
+                        <img width="500px" src="./assets/diagrams/internal-before.png" alt="diagram of internals showing 4 modules">
+                    </div>
+                </section>
+                <section>
+                    <div class="r-hstack justify-around">
+                        <div class="r-vstack items-start">
+                            <div class="r-hstack" style="gap: 20px;">
+                                <img width="50px" src="./assets/diagrams/removed.png" alt="symbol for destroyed microcontroller">
+                                <small class="code">Obliterated</small>
+                            </div>
+                            <div class="r-hstack" style="gap: 20px;">
+                                <img width="50px" src="./assets/diagrams/new-controller.png" alt="symbol for new microcontroller">
+                                <small class="code">New Microcontroller</small>
+                            </div>
+                        </div>
+                        <img width="500px" src="./assets/diagrams/internal-after.png" alt="diagram of internals showing replaced microcontroller">
+                    </div>
+                </section>
+                <section class="fragments">
+                    <img class="r-frame" src="./assets/pinput.png" alt="data pin inputs">
+                    <div class="r-stack">
+                        <div class="r-vstack fragment current-visible">
+                            <b>VCC</b>
+                            <small>Voltage Connected Circuit = Power connection</small>
+                        </div>
+                        <div class="r-vstack fragment current-visible">
+                            <b>CLA</b>
+                            <small>Clock Latch = Display current pixels</small>
+                        </div>
+                        <div class="r-vstack fragment current-visible">
+                            <b>CLKDI</b>
+                            <small>Clockdi = Push a new pixel</small>
+                        </div>
+                        <div class="r-vstack fragment current-visible">
+                            <b>IN</b>
+                            <small>Input = Pixel on or off</small>
+                        </div>
+                        <div class="r-vstack fragment current-visible">
+                            <b>EN</b>
+                            <small>Enable = Screen on or off</small>
+                        </div>
+                        <div class="r-vstack fragment current-visible">
+                            <b>GND</b>
+                            <small>Ground = Ground connection</small>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="r-stack fragments">
+                        <img height="600px" class="r-frame" src="./assets/internals.jpg" alt="Fully wired internals">
+                        <small class="fragment" style="position: relative; top: 130px; left: 280px;"><- button</small>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <img  src="./assets/toit.png" alt="toit logo" height="300px">
+                    <h3>The Framework</h4>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-stack fragments">
+                        <img height="250px" src="./assets/toit.png" alt="toit logo">
+                        <small style="position: relative; bottom: 200px; right: 0px;">Not C++</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; right: 300px;">Made for ESP32</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; left: 300px;">Wifi updates</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; right: 340px;">High level language</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; left: 340px;">Hard to brick</small>
+                        <small class="fragment" style="position: relative; top: 50px; right: 300px;">Power efficient</small>
+                        <small class="fragment" style="position: relative; top: 50px; left: 300px;">Shiny new technology</small>
+                        <small class="fragment" style="position: relative; top: 200px; right: 0px;">Nice logo</small>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Great developer experience</li>
+                            <li>Right level of abstractions for me</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <pre class="r-frame"><code data-trim data-line-numbers="8-13|15-18|20-22">
+                        import gpio
+                        ENABLE_PIN ::= gpio.Pin 26
+                        DATA_PIN ::= gpio.Pin 27
+                        CLOCK_PIN ::= gpio.Pin 14
+                        LATCH_PIN ::= gpio.Pin 12
+                        BUTTON_PIN := gpio.Pin 25
+
+                        init_io:
+                            ENABLE_PIN.configure --output
+                            DATA_PIN.configure --output
+                            CLOCK_PIN.configure --output
+                            LATCH_PIN.configure --output
+                            BUTTON_PIN.configure --input --pull_up
+
+                        write_dot x/int:
+                            DATA_PIN.set x
+                            CLOCK_PIN.set 1
+                            CLOCK_PIN.set 0
+
+                        display_frame:
+                            LATCH_PIN.set 1
+                            LATCH_PIN.set 0
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-hstack" style="gap: 100px;">
+                        <pre class="r-frame" width="200px;"><code data-trim data-line-numbers>
+                            import .io
+                            main:
+                                init_io
+                                while true:
+                                    write_dot 1
+                                    display_frame
+                                    sleep --ms=33
+                        </code></pre>
+                        <video class="r-frame" height="500px" data-autoplay src="./assets/demos/bit.mp4" alt="board filling up with pixels" loop></video>
+                    </div>
+                </section>
+<!--             _   ___ _____ 
+                /_\ | _ \_   _|
+               / _ \|   / | |  
+              /_/ \_\_|_\ |_|  
+-->
+                <section>
+                    <small><em>making</em></small>
+                    <h1>Art</h1>
+                </section>
+                <section>
+                    <div class="r-stack">
+                        <img class="r-frame" width="500px" height="500px" src="./assets/monalisa.png" alt="monalisa pixilated black and white">
+                        <img class="fragment r-frame" width="500px" height="500px" src="./assets/monalisacontrast.png" alt="monalisa pixilated grey scale">
+                        <img class="fragment r-frame" width="500px" height="500px" src="./assets/monalisacolour.png" alt="monalisa pixilated colour">
+                    </div>
+                    <aside class="notes">
+                        I hope you've realised by now it's not going to be that kind of art
+                    </aside>
+                </section>
+                <section>
+                    <small>no, we're going to be making</small>
+                    <h1 class="r-fit-text">🎉Abstract art🎉</h1>
+                </section>
+                <section>
+                    <em>speaking of abstract</em>
+                </section>
+                <section>
+                    <small>Abstraction 1:</small>
+                    <br>
+                    <h3>Frames</h3>
+                </section>
+                
+                <section>
+                    <img class="r-frame" src="./assets/framedemo.gif" alt="array of data representing a frame">
+                </section>
+                <section>
+                    <img src="./assets/diagrams/picture-display.png" alt="pattern being translated poorly">
+                </section>
+                <section>
+                    <img src="./assets/diagrams/sequence.png" alt="order of pixels diagram">
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="1" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait"></div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="1" class="pixel" style="grid-column: 1; grid-row: 1;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="2" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="1" class="pixel" style="grid-column: 2; grid-row: 1;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="4" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="3" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="1" class="pixel" style="grid-column: 2; grid-row: 2;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="4" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="1" class="pixel" style="grid-column: 1; grid-row: 2;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="5" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="2" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="1" class="pixel" style="grid-column: 3; grid-row: 1;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="6" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="3" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="2" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="1" class="pixel" style="grid-column: 4; grid-row: 1;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="7" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="4" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="2" class="pixel on" style="grid-column: 4; grid-row: 1;"></div><div data-id="1" class="pixel" style="grid-column: 4; grid-row: 2;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="8" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="7" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="6" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="5" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="4" class="pixel" style="grid-column: 3; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 4; grid-row: 1;"></div><div data-id="2" class="pixel on" style="grid-column: 4; grid-row: 2;"></div><div data-id="1" class="pixel" style="grid-column: 3; grid-row: 2;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="10" class="pixel" style="grid-column: 2; grid-row: 3;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="8" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="7" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="5" class="pixel" style="grid-column: 3; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="3" class="pixel on" style="grid-column: 4; grid-row: 2;"></div><div data-id="2" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="1" class="pixel" style="grid-column: 3; grid-row: 3;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="11" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="10" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="9" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="8" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="2" class="pixel on" style="grid-column: 3; grid-row: 3;"></div><div data-id="1" class="pixel" style="grid-column: 4; grid-row: 3;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="12" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="11" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="9" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="6" class="pixel on" style="grid-column: 4; grid-row: 1;"></div><div data-id="5" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="4" class="pixel" style="grid-column: 3; grid-row: 2;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 3;"></div><div data-id="2" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="1" class="pixel" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 4;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="12" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="11" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="10" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 3; grid-row: 1;"></div><div data-id="7" class="pixel on" style="grid-column: 4; grid-row: 1;"></div><div data-id="6" class="pixel on" style="grid-column: 4; grid-row: 2;"></div><div data-id="5" class="pixel" style="grid-column: 3; grid-row: 2;"></div><div data-id="4" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="3" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="2" class="pixel on" style="grid-column: 4; grid-row: 4;"></div><div data-id="1" class="pixel" style="grid-column: 3; grid-row: 4;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="14" class="pixel" style="grid-column: 2; grid-row: 4;"></div><div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="12" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="11" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="10" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="7" class="pixel on" style="grid-column: 4; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="5" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 3;"></div><div data-id="3" class="pixel on" style="grid-column: 4; grid-row: 4;"></div><div data-id="2" class="pixel on" style="grid-column: 3; grid-row: 4;"></div><div data-id="1" class="pixel" style="grid-column: 1; grid-row: 3;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="15" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="14" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="13" class="pixel on" style="grid-column: 2; grid-row: 1;"></div><div data-id="12" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="11" class="pixel" style="grid-column: 1; grid-row: 2;"></div><div data-id="10" class="pixel" style="grid-column: 3; grid-row: 1;"></div><div data-id="9" class="pixel on" style="grid-column: 4; grid-row: 1;"></div><div data-id="8" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="6" class="pixel on" style="grid-column: 3; grid-row: 3;"></div><div data-id="5" class="pixel" style="grid-column: 4; grid-row: 3;"></div><div data-id="4" class="pixel" style="grid-column: 4; grid-row: 4;"></div><div data-id="3" class="pixel on" style="grid-column: 3; grid-row: 4;"></div><div data-id="2" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="1" class="pixel" style="grid-column: 2; grid-row: 3;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                                <div data-id="16" class="pixel on" style="grid-column: 4; grid-row: 4;"></div>
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="15" class="pixel" style="grid-column: 1; grid-row: 1;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="13" class="pixel on" style="grid-column: 2; grid-row: 2;"></div><div data-id="12" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="11" class="pixel" style="grid-column: 3; grid-row: 1;"></div><div data-id="10" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="9" class="pixel on" style="grid-column: 4; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 3; grid-row: 2;"></div><div data-id="7" class="pixel on" style="grid-column: 3; grid-row: 3;"></div><div data-id="6" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="5" class="pixel" style="grid-column: 4; grid-row: 4;"></div><div data-id="4" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="3" class="pixel on" style="grid-column: 1; grid-row: 3;"></div><div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 3;"></div><div data-id="1" class="pixel" style="grid-column: 2; grid-row: 4;"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <div class="r-hstack" style="gap: 100px;">
+                            <div data-id="frame1" class="pixel-grid portrait">
+                            </div>
+                            <div data-id="frame2" class="pixel-grid portrait">
+                                <div data-id="16" class="pixel on" style="grid-column: 1; grid-row: 1;"></div><div data-id="15" class="pixel" style="grid-column: 2; grid-row: 1;"></div><div data-id="14" class="pixel" style="grid-column: 2; grid-row: 2;"></div><div data-id="13" class="pixel on" style="grid-column: 1; grid-row: 2;"></div><div data-id="12" class="pixel on" style="grid-column: 3; grid-row: 1;"></div><div data-id="11" class="pixel" style="grid-column: 4; grid-row: 1;"></div><div data-id="10" class="pixel" style="grid-column: 4; grid-row: 2;"></div><div data-id="9" class="pixel on" style="grid-column: 3; grid-row: 2;"></div><div data-id="8" class="pixel" style="grid-column: 3; grid-row: 3;"></div><div data-id="7" class="pixel on" style="grid-column: 4; grid-row: 3;"></div><div data-id="6" class="pixel on" style="grid-column: 4; grid-row: 4;"></div><div data-id="5" class="pixel" style="grid-column: 3; grid-row: 4;"></div><div data-id="4" class="pixel" style="grid-column: 1; grid-row: 3;"></div><div data-id="3" class="pixel on" style="grid-column: 2; grid-row: 3;"></div><div data-id="2" class="pixel on" style="grid-column: 2; grid-row: 4;"></div><div data-id="1" class="pixel" style="grid-column: 1; grid-row: 4;"></div>
+                            </div>
+                        </div>
+                        <small><a href="#/21">Restart</a></small>
+                    </section>
+                </section>
+                <section>
+                    <div class="r-vstack">
+                        <img class="r-frame" width="700px" src="./assets/default_map.png" alt="sequence of indeces for the correct ordering">
+                        <small>0x00 = 0</small>
+                        <small>0xff = 255</small>
+                    </div>
+                    <aside class="notes">
+                        <p>Tried to make a mapping function, wasn't working out</p>
+                        <p>This is how the other guy did it</p>
+                    </aside>
+                </section>
+                <section>
+                    <video class="r-frame" height="500px" data-autoplay src="./assets/demos/morph.mp4" alt="screen animation showing a morphing pattern" loop></video>
+                </section>
+                <section>
+                    <div class="r-vstack">
+                        <small>✨Painstakingly Handcrafted✨</small>
+                        <img height="500px" src="./assets/handcrafted.png" alt="minimap view of different patterns">
+                        <aside class="notes">
+                            <p>Drawn on pixel art software</p>
+                            <p>converted by hand</p>
+                            <p>There's definitely a better way to do this</p>
+                        </aside>
+                    </div>
+                </section>
+                <section class="fragments">
+                    <h3>Review</h3>
+                    <ul>
+                        <li>Very straightforward</li>
+                        <li>Simple animations</li>
+                        <li>Super time consuming</li>
+                        <li>Not really dynamic</li>
+                    </ul>
+                    <h2 class="fragment">4/10</h2>
+                </section>
+                <section>
+                    <small>Abstraction 2:</small>
+                    <br>
+                    <h3>Cursor</h3>
+                </section>
+                <section>
+                    <pre class="r-frame"><code data-trim data-line-numbers="26-30|46-53|55-66">
+                        EMPTY_FRAME ::= #[
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        ]
+
+                        class Frame:
+                            data_ := null
+
+                            constructor:
+                                data_ = EMPTY_FRAME.copy
+
+                            current_x := 0
+                            current_y := 0
+
+                            current_pixel:
+                                return current_y * 16 + current_x
+
+                            set data/ByteArray:
+                                data_ = data
+                            
+                            get: return data_
+
+                            clear:
+                                data_ = EMPTY_FRAME.copy
+                                
+                            copy: return data_.copy
+
+                            set_pixel x/int y/int bit/int:
+                                if x >= 0 and x < 16 and y >= 0 and y < 16:
+                                    data_[y * 16 + x] = bit
+
+                            set_pixel_at_current bit/int:
+                                data_[current_pixel] = bit
+                            
+                            get_pixel_at_current:
+                                return data_[current_pixel]
+                            
+                            flip_pixel_at_current:
+                                data_[current_pixel] = data_[current_pixel] == 0 ? 1 : 0
+
+                            set_current x/int y/int:
+                                if x >= 0 and x < 16 and y >= 0 and y < 16:
+                                    current_x = x
+                                    current_y = y
+
+                            move_current x/int y/int:
+                                if x + current_x >= 0 and x + current_x < 16 and y + current_y >= 0 and y + current_y < 16:
+                                    current_x += x
+                                    current_y += y
+
+                            can_move x/int y/int:
+                                return x + current_x >= 0 and x + current_x < 16 and y + current_y >= 0 and y + current_y < 16
+                    </code></pre>
+                    <aside class="notes">
+                        <p>Inspired by python turtle from my first programming unit</p>
+                    </aside>
+                </section>
+                <section>
+                    <img src="./assets/demos/chase.gif" alt="">
+                </section>
+                <section>
+                    good for dynamic behaivior but not for large scale updates
+                    <aside class="notes">wip</aside>
+                </section>
+                <section>
+                    <p>The process</p>
+                    <p>Looking for emergent patterns</p>
+                    <p>Hard to think up a full final concept, have to experiment</p>
+                </section>
+                <section>
+                    Showcase vs Decoration
+                </section>
+<!--             ___  ___  ___ _______      ___   ___ ___ 
+                / __|/ _ \| __|_   _\ \    / /_\ | _ \ __|
+                \__ \ (_) | _|  | |  \ \/\/ / _ \|   / _| 
+                |___/\___/|_|   |_|   \_/\_/_/ \_\_|_\___|
+-->
+                <section>
+                    <small><em>even more</em></small>
+                    <h1>Software</h1>
+                    <aside class="notes">Let's see how far we can push this thing</aside>
+                </section>
+                <section data-auto-animate>
+                    <h3>Let's play a game</h3>
+                    <img width="500px" src="./assets/multiplayerqr.png" alt="mysterious qr code">
+                </section>
+                <section data-auto-animate>
+                    <img height="400px" src="./assets/cloudflarearch.png">
+                    <div class="r-hstack" style="gap: 100px;">
+                        <a href="https://oberled-ui.pages.dev/">oberled-ui.pages.dev</a>
+                        <img width="200px" src="./assets/multiplayerqr.png" alt="mysterious qr code">
+                    </div>
+                </section>
+                <section>
+                    A few thoughts (and limitations) regarding toit
+                    <aside class="notes">
+                        <p>the new language was a net negative</p>
+                        <p>hard to find examples because new</p>
+                        <p>great tooling and amazing functionality offering</p>
+                        <p>not the right tool for the job (efficiency vs speed)</p>
+                    </aside>
+                </section>
+                <section>
+                    Limitations of the screen
+                </section>
+                <section>
+                    Noticed ikea has brightness (HOW)
+                </section>
+                <section data-auto-animate>
+                    <img style="filter: invert();" src="./assets/rustlogo.png" alt="rust logo" height="300px">
+                    <h3>The (new) Framework</h4>
+                    <aside class="notes">
+                        bet you didn't think this would turn into a rust talk halfway through
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-stack fragments">
+                        <img style="filter: invert();" height="250px" src="./assets/rustlogo.png" alt="rust logo">
+                        <small style="position: relative; bottom: 200px; right: 0px;">Not C++</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; right: 300px;">Speedy</small>
+                        <small class="fragment" style="position: relative; bottom: 160px; left: 300px;">Helps you write good code</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; right: 340px;">Low level language</small>
+                        <small class="fragment" style="position: relative; bottom: 60px; left: 340px;">Hard to brick</small>
+                        <small class="fragment" style="position: relative; top: 50px; right: 300px;">Decent support for ESP32</small>
+                        <small class="fragment" style="position: relative; top: 50px; left: 300px;">Really intimidating</small>
+                        <small class="fragment" style="position: relative; top: 200px; right: 0px;">I don't like the logo</small>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Great developer experience</li>
+                            <li>Right level of abstractions for me</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    Chip swap
+                </section>
+                <section>
+                    The rust journey (short)
+                </section>
+                <section>
+                    BRIGHTNESS ACHIEVED
+                </section>
+                <section>
+                    Noise art
+                </section>
+                <section>
+                    Rasterisation
+                </section>
+<!--             ___ ___  _  _  ___ _   _   _ ___ ___ ___  _  _ 
+                / __/ _ \| \| |/ __| | | | | / __|_ _/ _ \| \| |
+               | (_| (_) | .` | (__| |_| |_| \__ \| | (_) | .` |
+                \___\___/|_|\_|\___|____\___/|___/___\___/|_|\_|
+ -->
+                <section>
+                    <small><em>key</em></small>
+                    <h1>Takeaways</h1>
+                </section>
+                <section>
+                    <ul>
+                        <li>Making good art is hard</li>
+                        <li>Depends on the medium/limitations</li>
+                        <li>For a product like this doing this last part is VERY IMPORTANT</li>
+                        <li>Embedded performance is tricky</li>
+                    </ul>
+                </section>
+                <section>
+                    But wait there's more
+                </section>
+                <section>
+                    <h1>Thank you</h1>
+                </section>
+                <section>Plug/Links</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+
+		<script src="plugin/highlight/toit.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                transition: "fade",
+                progress: false,
+                highlight: {
+                    beforeHighlight: hljs => {
+                        hljs.registerLanguage("toit", hljsToit)
+                    }
+                },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+			});
+		</script>
+	</body>
+</html>

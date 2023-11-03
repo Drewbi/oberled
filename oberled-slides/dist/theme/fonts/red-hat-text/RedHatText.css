@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-Semibold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-SemiBoldItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-Bold.ttf');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Red Hat Text';
+    src: url('./RedHatText-BoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+}
