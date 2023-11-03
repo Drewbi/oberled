@@ -1,0 +1,17 @@
+name = "oberled-socket"
+main = "src/worker.ts"
+compatibility_date = "2023-08-21"
+
+# Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
+# Durable Objects can live for as long as needed. Use these when you need a long-running "server", such as in realtime apps.
+# Docs: https://developers.cloudflare.com/workers/runtime-apis/durable-objects
+[durable_objects]
+bindings = [
+    { name = "SCREEN_STATE", class_name = "ScreenState" }
+]
+
+# Durable Object migrations.
+# Docs: https://developers.cloudflare.com/workers/learning/using-durable-objects#configure-durable-object-classes-with-migrations
+[[migrations]]
+tag = "v1"
+new_classes = ["ScreenState"]
