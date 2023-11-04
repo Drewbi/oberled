@@ -4,7 +4,7 @@ import .modes
 current_mode := null
 
 init_modes:
-  set_mode "pulse"
+  set_mode DEMO_MODES[random DEMO_MODES.size]
 
 set_mode mode/string:
   mode-changed = true
@@ -62,6 +62,18 @@ VALID_MODES ::= [
   "sockey",
   "wave",
   "dvd",
+]
+
+DEMO_MODES ::= [
+  VALID-MODES[1],
+  VALID-MODES[2],
+  VALID-MODES[4],
+  VALID-MODES[5],
+  VALID-MODES[7],
+  VALID-MODES[8],
+  VALID-MODES[11],
+  VALID-MODES[12],
+  VALID-MODES[15],
 ]
 
 mode_changed := false
