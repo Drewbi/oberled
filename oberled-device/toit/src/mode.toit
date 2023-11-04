@@ -4,7 +4,7 @@ import .modes
 current_mode := null
 
 init_modes:
-  set_mode "off"
+  set_mode "pulse"
 
 set_mode mode/string:
   mode-changed = true
