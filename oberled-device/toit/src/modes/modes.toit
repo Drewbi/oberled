@@ -10,7 +10,7 @@ import .ogstripe
 import .picture
 import .monalisa
 import .pulse
-import .sockey
+// import .sockey
 import .wave
 import .dvd
 
